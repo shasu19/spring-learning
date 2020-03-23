@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- scope [request, session, prototype, singleton] -->
+	<bean id="triangle" class="com.shasu19p.beans.Triangle"
+		scope="prototype">
+		<property name="points">
+			<list>
+				<ref bean="pointA" />
+				<ref bean="pointB" />
+				<ref bean="pointC" />
+
+				<bean class="com.shasu19p.beans.Point">
+					<property name="x" value="3300"></property>
+					<property name="y" value="2200"></property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="pointA" class="com.shasu19p.beans.Point">
+		<property name="x" value="100"></property>
+		<property name="y" value="200"></property>
+	</bean>
+
+	<bean id="pointB" class="com.shasu19p.beans.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+
+	<bean id="pointC" class="com.shasu19p.beans.Point">
+		<property name="x" value="50"></property>
+		<property name="y" value="60"></property>
+	</bean>
+
+</beans>
