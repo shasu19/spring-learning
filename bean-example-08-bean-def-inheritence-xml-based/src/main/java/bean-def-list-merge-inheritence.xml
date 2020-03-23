@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- abstract bean and will not be created as bean if we mark abstract true 
+		else spring will create it's bean also -->
+	<bean id="abstractTriangle" class="com.shasu19p.beans.Triangle"
+		abstract="true">
+		<property name="points">
+			<list>
+				<bean class="com.shasu19p.beans.Point">
+					<property name="x" value="1001"></property>
+					<property name="y" value="2002"></property>
+				</bean>
+				<ref bean="pointA" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- this is inheriting abstract triagnle bean definition and merging list 
+		properties -->
+	<bean id="triangle" class="com.shasu19p.beans.Triangle"
+		parent="abstractTriangle">
+
+		<property name="points">
+			<list merge="true">
+				<ref bean="pointB" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="pointA" class="com.shasu19p.beans.Point">
+		<property name="x" value="100"></property>
+		<property name="y" value="200"></property>
+	</bean>
+
+	<bean id="pointB" class="com.shasu19p.beans.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+
+</beans>

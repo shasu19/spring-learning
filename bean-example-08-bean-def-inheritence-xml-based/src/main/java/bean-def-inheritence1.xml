@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- abstract bean and will not be created as bean if we mark abstract true 
+		else spring will create it's bean also -->
+	<bean id="abstractCircle" class="com.shasu19p.beans.Circle"
+		abstract="true">
+		<property name="pointA" ref="pointA"></property>
+	</bean>
+
+	<!-- this is inheriting abstract circle bean definition -->
+	<bean id="circle" class="com.shasu19p.beans.Circle"
+		parent="abstractCircle">
+		<property name="pointB" ref="pointB" />
+	</bean>
+
+	<bean id="pointA" class="com.shasu19p.beans.Point">
+		<property name="x" value="100"></property>
+		<property name="y" value="200"></property>
+	</bean>
+
+	<bean id="pointB" class="com.shasu19p.beans.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+
+</beans>
