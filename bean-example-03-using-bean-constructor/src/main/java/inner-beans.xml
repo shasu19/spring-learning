@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- We can call this bean with name 'triangleLearn' also -->
+	<!-- Triangle class having three point classes references -->
+	<!-- idref is another way of explicitly saying spring that we are making 
+		ref with 'id' -->
+	<bean id="triangle2" class="com.shasu19p.beans.Triangle"
+		name="triangleLearn">
+
+		<!-- name, type, index or value are used with constructor -->
+		<constructor-arg index="0">
+			<bean id="pointAA" class="com.shasu19p.beans.Point">
+				<property name="x" value="300"></property>
+				<property name="y" value="200"></property>
+			</bean>
+		</constructor-arg>
+		<constructor-arg name="pointB" ref="pointBB" />
+		<constructor-arg name="pointC" ref="pointCC" />
+
+	</bean>
+
+	<bean id="pointBB" class="com.shasu19p.beans.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+
+	<bean id="pointCC" class="com.shasu19p.beans.Point">
+		<property name="x" value="50"></property>
+		<property name="y" value="60"></property>
+	</bean>
+
+	<!-- giving bean alias -->
+	<alias name="triangle2" alias="triangle2-test" />
+
+</beans>
