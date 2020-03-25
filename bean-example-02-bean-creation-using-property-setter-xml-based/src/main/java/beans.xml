@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<!-- Triangle class having three point classes references -->
+	<bean id="triangle" class="com.shasu19p.beans.Triangle">
+		<property name="pointA" ref="pointA"></property>
+		<property name="pointB" ref="pointB"></property>
+		<property name="pointC" ref="pointC"></property>
+	</bean>
+
+	<bean id="pointA" class="com.shasu19p.beans.Point">
+		<property name="x" value="10"></property>
+		<property name="y" value="20"></property>
+	</bean>
+	
+	<bean id="pointB" class="com.shasu19p.beans.Point">
+		<property name="x" value="30"></property>
+		<property name="y" value="40"></property>
+	</bean>
+	
+	<bean id="pointC" class="com.shasu19p.beans.Point">
+		<property name="x" value="50"></property>
+		<property name="y" value="60"></property>
+	</bean>
+
+</beans>
